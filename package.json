@@ -1,0 +1,31 @@
+{
+  "name": "labanane-react",
+  "version": "1.0.0",
+  "description": "LaBanane clone in React",
+  "main": "index.js",
+  "dependencies": {
+    "react-dom": "^15.6.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "html-webpack-plugin": "^2.28.0",
+    "webpack": "^3.0.0",
+    "webpack-dev-server": "^2.5.0"
+  },
+  "scripts": {
+    "start": "webpack-dev-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/boris-graeff/labanane-react.git"
+  },
+  "author": "Boris Graeff <boris.graeff@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/boris-graeff/labanane-react/issues"
+  },
+  "homepage": "https://github.com/boris-graeff/labanane-react#readme"
+}
