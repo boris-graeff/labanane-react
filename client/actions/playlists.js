@@ -26,7 +26,7 @@ function fetchPlaylists() {
 
 
 function shouldFetchPlaylists (state) {
-  const playlists = state.playlists
+  const {playlists} = state
   return !playlists.isFetching
 }
 

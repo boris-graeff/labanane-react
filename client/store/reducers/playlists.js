@@ -1,5 +1,4 @@
-import {combineReducers} from 'redux'
-import {REQUEST_PLAYLISTS, RECEIVE_PLAYLISTS} from './actionTypes'
+import {REQUEST_PLAYLISTS, RECEIVE_PLAYLISTS} from '../../actions/actionTypes'
 
 const initialState = {
   playlists: {
@@ -23,8 +22,5 @@ function playlists(state = initialState.playlists, action) {
       return state
   }
 }
-const rootReducer = combineReducers({
-  playlists
-})
 
-export default rootReducer
+export default playlists

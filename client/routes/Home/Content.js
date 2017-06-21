@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import {fetchPlaylistsIfNeeded} from '../../actions'
+import { Link } from 'react-router-dom'
+import {fetchPlaylistsIfNeeded} from '../../actions/playlists'
 
 class HomeContent extends Component {
 
@@ -14,7 +15,9 @@ class HomeContent extends Component {
     return (
       <ul>
         {playlists.items.map(playlist => (
-          <li key={playlist.id}>{playlist.name}</li>
+          <li key={playlist.id}>
+            <Link to={`/playlist/${playlist.id}`}>{playlist.name}</Link>
+          </li>
         ))}
       </ul>
     )
