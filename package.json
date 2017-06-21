@@ -4,7 +4,10 @@
   "description": "LaBanane clone in React",
   "main": "index.js",
   "dependencies": {
-    "react-dom": "^15.6.1"
+    "react-dom": "^15.6.1",
+    "react-redux": "^5.0.5",
+    "react-router-dom": "^4.1.1",
+    "redux": "^3.7.0"
   },
   "devDependencies": {
     "babel-core": "^6.25.0",
