@@ -1,11 +1,24 @@
 import React, { Component } from 'react'
+import {fetchPlaylistsIfNeeded} from '../../actions'
 
-const HomeContent = ({ playlists }) => (
-  <ul>
-    {playlists.map(playlist => (
-      <li key={playlist}>{playlist}</li>
-    ))}
-  </ul>
-)
+class HomeContent extends Component {
+
+  componentDidMount() {
+    const {dispatch} = this.props
+    dispatch(fetchPlaylistsIfNeeded())
+  }
+
+  render() {
+    const {playlists} = this.props
+
+    return (
+      <ul>
+        {playlists.items.map(playlist => (
+          <li key={playlist.id}>{playlist.name}</li>
+        ))}
+      </ul>
+    )
+  }
+}
 
 export default HomeContent

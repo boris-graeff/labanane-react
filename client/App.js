@@ -6,7 +6,10 @@ import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 import Home from './routes/Home/Container'
 import Playlist from './routes/Playlist'
 
-const App = ({ store }) =>  (
+import configureStore from './configureStore'
+const store = configureStore()
+
+const App = () =>  (
   <Provider store={store}>
     <BrowserRouter>
       <Switch>
@@ -17,9 +20,5 @@ const App = ({ store }) =>  (
     </BrowserRouter>
   </Provider>
 )
-
-App.propTypes = {
-  store: PropTypes.object.isRequired
-}
 
 export default App

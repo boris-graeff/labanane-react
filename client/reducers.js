@@ -1,18 +1,30 @@
-import {SET_PLAYLISTS} from './actionTypes'
+import {combineReducers} from 'redux'
+import {REQUEST_PLAYLISTS, RECEIVE_PLAYLISTS} from './actionTypes'
 
 const initialState = {
-  playlists: ['P1', 'P2', 'P3']
+  playlists: {
+    isFetching: false,
+    items: []
+  }
 }
 
-function reducer (state = initialState, action) {
+function playlists(state = initialState.playlists, action) {
   switch (action.type) {
-    case SET_PLAYLISTS:
+    case RECEIVE_PLAYLISTS:
       return Object.assign({}, state, {
-        playlists: action.playlists
+        isFetching: false,
+        items: action.playlists
+      })
+    case REQUEST_PLAYLISTS:
+      return Object.assign({}, state, {
+        isFetching: true
       })
     default:
       return state
   }
 }
+const rootReducer = combineReducers({
+  playlists
+})
 
-export default reducer
+export default rootReducer
