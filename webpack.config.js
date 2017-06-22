@@ -7,6 +7,8 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   inject: 'body'
 })
 
+const isDebug = !process.argv.includes('--release');
+
 module.exports = {
   entry: './client/index.js',
   output: {
@@ -15,8 +17,58 @@ module.exports = {
     filename: 'bundle.js'
   },
   module: {
-    loaders: [
-      { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ }
+    rules: [
+      {
+        test: /\.js$/,
+        loader: 'babel-loader', 
+        include:[
+          path.resolve(__dirname, './client')
+        ]
+      },
+      {
+        // Internal style
+        test: /\.pcss$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1,
+              sourceMap: isDebug,
+              modules: true,
+              localIdentName: isDebug ? '[name]-[local]-[hash:base64:5]' : '[hash:base64:5]',
+              minimize: !isDebug,
+              discardComments: { removeAll: true }
+            }
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              config: {
+                path: './postcss.config.js'
+              }
+            }
+          }
+        ]
+      },
+      {
+        // External style
+        test: /\.css$/,
+        include: [
+          path.resolve(__dirname, './client/style')
+        ],
+        use: [
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: isDebug,
+              modules: false,
+              minimize: !isDebug,
+              discardComments: {removeAll: true}
+            }
+          }
+        ]
+      }
     ]
   },
   plugins: [HtmlWebpackPluginConfig],
