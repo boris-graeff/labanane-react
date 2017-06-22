@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import {fetchPlaylistsIfNeeded} from '../../actions/playlists'
 import s from './style.pcss'
+import List from '../../components/List'
+import ListItem from '../../components/ListItem'
 
 class HomeContent extends Component {
 
@@ -14,13 +16,13 @@ class HomeContent extends Component {
     const {playlists} = this.props
 
     return (
-      <ul className={s.home}>
+      <List>
         {playlists.items.map(playlist => (
-          <li key={playlist.id}>
+          <ListItem key={playlist.id}>
             <Link to={`/playlist/${playlist.id}`}>{playlist.name}</Link>
-          </li>
+          </ListItem>
         ))}
-      </ul>
+      </List>
     )
   }
 }

@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import {fetchPlaylistIfNeeded} from '../../actions/playlist'
+import List from '../../components/List'
+import ListItem from '../../components/ListItem'
 
 class HomeContent extends Component {
 
@@ -14,7 +16,16 @@ class HomeContent extends Component {
     const {playlist} = this.props
 
     return (
-      <h1>{playlist.content.name}</h1>
+      <div>
+        <h1>{playlist.name}</h1>
+        <List>
+          {playlist.tracks.map(track => (
+            <ListItem key={track.id}>
+              {track.name}
+            </ListItem>
+          ))}
+        </List>
+      </div>
     )
   }
 }
