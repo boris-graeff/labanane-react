@@ -3,12 +3,13 @@ import Content from './Content'
 
 const mapStateToProps = state => {
   return {
-    playlist: state.playlist
+    playlist: state.playlist,
+    player: state.player
   }
 }
 
 const Playlist = connect(
-  mapStateToProps
+  mapStateToProps,
 )(Content)
 
 export default Playlist

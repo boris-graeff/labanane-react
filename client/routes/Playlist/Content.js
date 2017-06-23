@@ -1,9 +1,16 @@
 import React, { Component } from 'react'
 import {fetchPlaylistIfNeeded} from '../../actions/playlist'
-import List from '../../components/List'
-import TrackListItem from '../../components/TrackListItem'
+import TrackList from './components/TrackList'
+import Player from './components/Player'
+import {setTrack} from '../../actions/player'
 
 class HomeContent extends Component {
+
+  constructor (props) {
+    super(props)
+
+    this.setTrack = this.setTrack.bind(this)
+  }
 
   componentDidMount() {
     const {dispatch, match} = this.props
@@ -12,19 +19,20 @@ class HomeContent extends Component {
     dispatch(fetchPlaylistIfNeeded(playlistId))
   }
 
+  setTrack (event, track) {
+    const {dispatch} = this.props
+    dispatch(setTrack(track))
+  }
+
   render() {
-    const {playlist} = this.props
+    const {setTrack, props} = this
+    const {playlist, player} = props
 
     return (
       <div>
         <h1>{playlist.name}</h1>
-        <List>
-          {playlist.tracks.map((track, i) => (
-            <TrackListItem key={track.id} track={track} index={i}>
-              {track.name}
-            </TrackListItem>
-          ))}
-        </List>
+        <TrackList playlist={playlist} onTrackSelected={setTrack}></TrackList>
+        <Player player={player}></Player>
       </div>
     )
   }

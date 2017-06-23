@@ -1,6 +1,6 @@
 import api from '../api'
 
-import {REQUEST_PLAYLIST, RECEIVE_PLAYLIST, CREATE_PLAYLIST} from './actionTypes'
+import {REQUEST_PLAYLIST, RECEIVE_PLAYLIST} from './actionTypes'
 
 function requestPlaylist() {
   return {
