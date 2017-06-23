@@ -54,10 +54,8 @@ module.exports = {
       {
         // External style
         test: /\.css$/,
-        include: [
-          path.resolve(__dirname, './client/style')
-        ],
         use: [
+          'style-loader',
           {
             loader: 'css-loader',
             options: {
@@ -65,6 +63,14 @@ module.exports = {
               modules: false,
               minimize: !isDebug,
               discardComments: {removeAll: true}
+            }
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              config: {
+                path: './postcss.config.js'
+              }
             }
           }
         ]

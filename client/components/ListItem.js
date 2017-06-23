@@ -1,12 +1,16 @@
-import React from 'react'
+import React, {Component} from 'react'
 import s from './list-item.pcss'
+import classnames from 'classnames'
 
-const ListItem = (props) => {
-  return (
-    <li className={s.listitem}>
-      {props.children}
-    </li>
-  )
+class ListItem extends Component {
+  render () {
+    const {props} = this
+    return (
+      <li className={classnames(s.listItem, props.className)}>
+        {props.children}
+      </li>
+    )
+  }
 }
 
 export default ListItem
