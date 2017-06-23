@@ -18,7 +18,7 @@ function receivePlaylists(playlists) {
 function fetchPlaylists() {
   return dispatch => {
     dispatch(requestPlaylists())
-    return fetch(`https://labanane.no-ip.info/services/playlists`)
+    return fetch('/services/playlists')
       .then(response => response.json())
       .then(json => dispatch(receivePlaylists(json)))
   }

@@ -79,6 +79,11 @@ module.exports = {
   },
   plugins: [HtmlWebpackPluginConfig],
   devServer: {
-    historyApiFallback: true
+    historyApiFallback: true,
+    proxy:{
+      '/services' : {
+        target: 'http://localhost:4000'
+      }
+    }
   }
 }
