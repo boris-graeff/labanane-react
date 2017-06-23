@@ -4,7 +4,7 @@ import {fetchPlaylistsIfNeeded} from '../../actions/playlists'
 import s from './home.pcss'
 import List from '../../components/List'
 import ListItem from '../../components/ListItem'
-import TextBox from '../../components/TextBox'
+import CreateForm from './components/CreateForm'
 
 class HomeContent extends Component {
 
@@ -20,11 +20,7 @@ class HomeContent extends Component {
       <main className={s.home}>
         <div className={s.create}>
           <h1>LaBanane</h1>
-          <form>
-            <TextBox label="Name"></TextBox>
-            <TextBox label="Password"></TextBox>
-            <button type='submit'>Create</button>
-          </form>
+          <CreateForm></CreateForm>
         </div>
         <List className={s.explore}>
           {playlists.items.map(playlist => (

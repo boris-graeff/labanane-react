@@ -9,15 +9,15 @@ class TextBox extends Component {
   componentWillMount () {
     this.id = `textBox-${id++}`
   }
-  
+
   render () {
     const {props, id} = this
-    const {label} = props
+    const {label, value, name, type, handleChange} = props
 
     return (
       <div className={s.textBox}>
         <label htmlFor={id}>{label}</label>
-        <input type='text' id={id} />
+        <input type={type} name={name} id={id} value={value} onChange={handleChange}/>
       </div>
     )
   }
@@ -25,7 +25,14 @@ class TextBox extends Component {
 
 TextBox.propTypes = {
   label: PropTypes.string,
-
+  name: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  handleChange: PropTypes.func,
+  type: PropTypes.string
 }
+
+TextBox.defaultProps = {
+  type: 'text'
+};
 
 export default TextBox
