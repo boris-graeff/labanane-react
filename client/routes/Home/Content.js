@@ -7,7 +7,7 @@ import ListItem from '../../components/ListItem'
 import CreateForm from './components/CreateForm'
 
 class HomeContent extends Component {
-
+  
   componentDidMount() {
     const {dispatch} = this.props
     dispatch(fetchPlaylistsIfNeeded())

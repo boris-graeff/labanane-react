@@ -1,6 +1,6 @@
-import 'whatwg-fetch'
+import api from '../api'
 
-import {REQUEST_PLAYLIST, RECEIVE_PLAYLIST} from './actionTypes'
+import {REQUEST_PLAYLIST, RECEIVE_PLAYLIST, CREATE_PLAYLIST} from './actionTypes'
 
 function requestPlaylist() {
   return {
@@ -18,9 +18,8 @@ function receivePlaylist(playlist) {
 function fetchPlaylist(playlistId) {
   return dispatch => {
     dispatch(requestPlaylist())
-    return fetch(`/services/playlists/${playlistId}`)
-      .then(response => response.json())
-      .then(json => dispatch(receivePlaylist(json)))
+    return api.get(`/playlists/${playlistId}`)
+      .then(({data}) => dispatch(receivePlaylist(data)))
   }
 }
 
@@ -36,4 +35,8 @@ export function fetchPlaylistIfNeeded (playlistId) {
       return dispatch(fetchPlaylist(playlistId))
     }
   }
+}
+
+export function createPlaylist (playlist) {
+  return api.post('/playlists', playlist)
 }

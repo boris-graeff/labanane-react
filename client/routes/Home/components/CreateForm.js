@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import s from './create-form.pcss'
 import TextBox from '../../../components/TextBox'
+import {createPlaylist} from '../../../actions/playlist'
 
 class CreateForm extends Component {
   constructor (props) {
@@ -20,7 +21,7 @@ class CreateForm extends Component {
 
   handleSubmit (event) {
     event.preventDefault()
-    console.log(this.state.name, this.state.password)
+    createPlaylist(this.state)
   }
 
   render () {

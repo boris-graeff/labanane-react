@@ -1,4 +1,4 @@
-import 'whatwg-fetch'
+import api from '../api'
 
 import {REQUEST_PLAYLISTS, RECEIVE_PLAYLISTS} from './actionTypes'
 
@@ -9,21 +9,21 @@ function requestPlaylists() {
 }
 
 function receivePlaylists(playlists) {
+  const sortedPlaylists = playlists.sort((a, b) => b.timestamp - a.timestamp)
+
   return {
     type: RECEIVE_PLAYLISTS,
-    playlists: playlists
+    playlists: sortedPlaylists
   }
 }
 
 function fetchPlaylists() {
   return dispatch => {
     dispatch(requestPlaylists())
-    return fetch('/services/playlists')
-      .then(response => response.json())
-      .then(json => dispatch(receivePlaylists(json)))
+    return api.get('/playlists')
+      .then(({data}) => dispatch(receivePlaylists(data)))
   }
 }
-
 
 function shouldFetchPlaylists (state) {
   const {playlists} = state
