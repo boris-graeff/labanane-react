@@ -1,5 +1,29 @@
-@import '../style/vars.css';
+@import '../style/vars.pcss';
 
 .textBox {
+  line-height: 1;
 
+  label {
+    font-size: 1.4rem;
+    margin-bottom: 3px;
+    margin-top: var(--space-small);
+  }
+
+  input {
+    border: none;
+    border-bottom: 2px solid rgba(var(--black), 0.1);
+    background: rgba(var(--black), 0.05);
+    display: block;
+    font-size: 15px;
+    height: 40px;
+    padding: 0 6px;
+    width: 100%;
+  }
+
+  .error-message {
+    background: rgba(var(--black), 0.2);
+    font-size: 1.4rem;
+    padding: var(--space-small);
+    margin-top: var(--space-small);
+  }
 }

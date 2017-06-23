@@ -22,13 +22,17 @@ class HomeContent extends Component {
           <h1>LaBanane</h1>
           <CreateForm></CreateForm>
         </div>
-        <List className={s.explore}>
-          {playlists.items.map(playlist => (
-            <ListItem key={playlist.id}>
-              <Link to={`/playlist/${playlist.id}`}>{playlist.name}</Link>
-            </ListItem>
-          ))}
-        </List>
+        <div className={s.explore}>
+          <div>
+            <List >
+              {playlists.items.map(playlist => (
+                <ListItem key={playlist.id}>
+                  <Link to={`/playlist/${playlist.id}`}>{playlist.name}</Link>
+                </ListItem>
+              ))}
+            </List>
+          </div>
+        </div>
       </main>
     )
   }

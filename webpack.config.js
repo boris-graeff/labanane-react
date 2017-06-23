@@ -28,6 +28,9 @@ module.exports = {
       {
         // Internal style
         test: /\.pcss$/,
+        exclude:[
+          path.resolve(__dirname, './client/style')
+        ],
         use: [
           'style-loader',
           {
@@ -53,7 +56,10 @@ module.exports = {
       },
       {
         // External style
-        test: /\.css$/,
+        test: /\.pcss$/,
+        include:[
+          path.resolve(__dirname, './client/style')
+        ],
         use: [
           'style-loader',
           {
