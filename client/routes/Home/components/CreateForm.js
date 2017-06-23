@@ -22,6 +22,10 @@ class CreateForm extends Component {
   handleSubmit (event) {
     event.preventDefault()
     createPlaylist(this.state)
+      .then(({data}) => {
+        const playlistId = data.id
+        this.context.router.history.push(`/playlist/${playlistId}`)
+      })
   }
 
   render () {
@@ -34,6 +38,10 @@ class CreateForm extends Component {
       </form>
     )
   }
+}
+
+CreateForm.contextTypes = {
+  router: React.PropTypes.object.isRequired
 }
 
 export default CreateForm

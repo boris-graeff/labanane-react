@@ -33,6 +33,6 @@ TextBox.propTypes = {
 
 TextBox.defaultProps = {
   type: 'text'
-};
+}
 
 export default TextBox
