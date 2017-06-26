@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
-import {fetchPlaylistIfNeeded} from '../../actions/playlist'
-import TrackList from './components/TrackList'
-import Player from './components/Player'
-import {setTrack} from '../../actions/player'
+import {fetchPlaylistIfNeeded} from '../actions/playlist'
+import TrackList from './Playlist/TrackList'
+import Player from './Playlist/Player'
+import {setTrack} from '../actions/player'
+import { connect } from 'react-redux'
 
-class HomeContent extends Component {
+class Playlist extends Component {
 
   constructor (props) {
     super(props)
@@ -19,23 +20,31 @@ class HomeContent extends Component {
     dispatch(fetchPlaylistIfNeeded(playlistId))
   }
 
-  setTrack (event, track) {
+  setTrack (track) {
     const {dispatch} = this.props
     dispatch(setTrack(track))
   }
 
   render() {
     const {setTrack, props} = this
-    const {playlist, player} = props
+    const {playlist} = props
 
     return (
       <div>
         <h1>{playlist.name}</h1>
         <TrackList playlist={playlist} onTrackSelected={setTrack}></TrackList>
-        <Player player={player}></Player>
+        <Player></Player>
       </div>
     )
   }
 }
 
-export default HomeContent
+const mapStateToProps = state => {
+  return {
+    playlist: state.playlist
+  }
+}
+
+export default connect(
+  mapStateToProps,
+)(Playlist)

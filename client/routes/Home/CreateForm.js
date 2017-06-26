@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
 import s from './create-form.pcss'
-import TextBox from '../../../components/TextBox'
-import {createPlaylist} from '../../../actions/playlist'
-import {slugify} from '../../../helpers/string'
+import TextBox from '../../components/TextBox'
+import {createPlaylist} from '../../actions/playlist'
+import {slugify} from '../../helpers/string'
 
 class CreateForm extends Component {
   constructor (props) {

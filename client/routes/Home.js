@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import {fetchPlaylistsIfNeeded} from '../../actions/playlists'
+import {fetchPlaylistsIfNeeded} from '../actions/playlists'
 import s from './home.pcss'
-import List from '../../components/List'
-import ListItem from '../../components/ListItem'
-import CreateForm from './components/CreateForm'
+import List from '../components/List'
+import ListItem from '../components/ListItem'
+import CreateForm from './Home/CreateForm'
 
-class HomeContent extends Component {
+class Home extends Component {
   
   componentDidMount() {
     const {dispatch} = this.props
@@ -38,4 +39,12 @@ class HomeContent extends Component {
   }
 }
 
-export default HomeContent
+const mapStateToProps = state => {
+  return {
+    playlists: state.playlists
+  }
+}
+
+export default connect(
+  mapStateToProps
+)(Home)

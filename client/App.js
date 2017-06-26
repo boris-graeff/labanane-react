@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import { Provider } from 'react-redux'
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 
-import Home from './routes/Home/Container'
-import Playlist from './routes/Playlist/Container'
+import Home from './routes/Home'
+import Playlist from './routes/Playlist'
 
 import configureStore from './store/configureStore'
 const store = configureStore()

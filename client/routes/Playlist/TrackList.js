@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
-import List from '../../../components/List'
-import TrackListItem from '../../../components/TrackListItem'
+import List from '../../components/List'
+import TrackListItem from '../../components/TrackListItem'
 import s from './trackList.pcss'
 
 class TrackList extends Component {

@@ -13,10 +13,9 @@ class TrackListItem extends Component {
     this._handleClick = this._handleClick.bind(this)
   }
 
-  _handleClick (event) {
-    const {props} = this
-    const {handleClick, track} = props
-    handleClick(event, track)
+  _handleClick () {
+    const {handleClick, track} = this.props
+    handleClick(track)
   }
 
   render () {
