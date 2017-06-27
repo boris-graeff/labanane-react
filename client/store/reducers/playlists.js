@@ -1,13 +1,11 @@
 import {REQUEST_PLAYLISTS, RECEIVE_PLAYLISTS} from '../../actions/actionTypes'
 
 const initialState = {
-  playlists: {
-    isFetching: false,
-    items: []
-  }
+  isFetching: false,
+  items: []
 }
 
-function playlists(state = initialState.playlists, action) {
+function playlists(state = initialState, action) {
   switch (action.type) {
     case RECEIVE_PLAYLISTS:
       return Object.assign({}, state, {

@@ -4,10 +4,6 @@
   display: flex;
   align-items: center;
 
-  &.selected {
-    background-color: var(--wheat);
-  }
-
   div {
     padding-right: 6px;
     padding-left: 36px;
@@ -31,22 +27,26 @@
     background-repeat: no-repeat;
     background-position: center center;
   }
+}
 
-  .index {
-    position: absolute;
-    font-size: 10px;
-    transform: translate(- var(--space-small), -50%);
-    top: 50%;
-    right: 100%;
-    text-align: right;
-    width: var(--space-big);
-  }
+.selected {
+  background-color: var(--wheat);
+}
 
-  &.youtube:before {
-    background-image: url('/assets/icn-you-tube.svg') // you-tube adblock hack
-  }
+.index {
+  position: absolute;
+  font-size: 10px;
+  transform: translate(calc(-1 * var(--space-small)), -50%);
+  top: 50%;
+  right: 100%;
+  text-align: right;
+  width: var(--space-big);
+}
 
-  &.soundcloud:before {
-    background-image: url('/assets/icn-soundcloud.svg')
-  }
+.youtube:before {
+  background-image: url('/client/assets/icn-you-tube.svg'); /* you-tube adblock hack */
+}
+
+.soundcloud:before {
+  background-image: url('/client/assets/icn-soundcloud.svg');
 }

@@ -4,7 +4,6 @@ import classnames from 'classnames'
 import PropTypes from 'prop-types'
 import s from './track-list-item.pcss'
 
-
 class TrackListItem extends Component {
 
   constructor (props) {
@@ -23,8 +22,8 @@ class TrackListItem extends Component {
     const {track, index, children} = props
 
     return (
-      <ListItem className={classnames(s.trackListItem, track.provider)} handleClick={_handleClick}>
-        <span className='index'>{index}</span>
+      <ListItem className={classnames(s.trackListItem, s[track.provider])} handleClick={_handleClick}>
+        <span className={s.index}>{index}</span>
         <div>
           {children}
         </div>

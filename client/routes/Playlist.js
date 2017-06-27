@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {fetchPlaylistIfNeeded} from '../actions/playlist'
 import TrackList from './Playlist/TrackList'
 import Player from './Playlist/Player'
+import SoundManager from '../components/SoundManager'
 import {setTrack} from '../actions/player'
 import { connect } from 'react-redux'
 
@@ -31,9 +32,12 @@ class Playlist extends Component {
 
     return (
       <div>
-        <h1>{playlist.name}</h1>
-        <TrackList playlist={playlist} onTrackSelected={setTrack}></TrackList>
-        <Player></Player>
+        <div>
+          <h1>{playlist.name}</h1>
+          <TrackList playlist={playlist} onTrackSelected={setTrack}></TrackList>
+          <Player></Player>
+        </div>
+        <SoundManager></SoundManager>
       </div>
     )
   }
