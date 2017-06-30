@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
 import s from './player.pcss'
+import {pause, play} from '../../actions/player'
 
 class Player extends Component {
 
@@ -12,11 +13,14 @@ class Player extends Component {
   }
 
   play () {
-    // TODO
+    const {dispatch} = this.props
+    dispatch(play())
+
   }
 
   pause () {
-    // TODO
+    const {dispatch} = this.props
+    dispatch(pause())
   }
 
 

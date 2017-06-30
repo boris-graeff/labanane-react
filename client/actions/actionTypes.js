@@ -5,3 +5,5 @@ export const REQUEST_PLAYLIST = 'REQUEST_PLAYLIST'
 export const RECEIVE_PLAYLIST = 'RECEIVE_PLAYLIST'
 
 export const SET_TRACK = 'SET_TRACK'
+export const PLAY = 'PLAY'
+export const PAUSE= 'PAUSE'

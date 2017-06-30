@@ -32,7 +32,8 @@ class SoundManager extends Component {
 
   checkState (state, nextState) {
     if (state !== nextState) {
-      // TODO
+      if (nextState === 'paused') this._player.pause()
+      else if (nextState === 'playing') this._player.play()
     }
   }
 
@@ -46,21 +47,25 @@ class SoundManager extends Component {
   checkTrack (player, nextPlayer) {
     const {track} = player
     const nextTrack = nextPlayer.track
+
+    const hasChanged = track.id !== nextTrack.id
     
-    if (track.id !== nextTrack.id) {
+    if (hasChanged) {
       this.checkProvider(track.provider, nextTrack.provider)
       this._player.loadAndPlay(nextTrack)
     }
+
+    return hasChanged
   }
 
   shouldComponentUpdate(nextProps, nextState) {
     const currentPlayer = this.props.player
     const nextPlayer = nextProps.player
 
-    this.checkTrack(currentPlayer, nextPlayer)
-
-    this.checkVolume(currentPlayer.volume, nextPlayer.volume)
-    this.checkState(currentPlayer.state, nextPlayer.state)
+    if( !this.checkTrack(currentPlayer, nextPlayer)){
+      this.checkState(currentPlayer.state, nextPlayer.state)
+      this.checkVolume(currentPlayer.volume, nextPlayer.volume)
+    }
 
     return false
   }
