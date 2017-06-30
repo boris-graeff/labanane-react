@@ -28,13 +28,14 @@ class Playlist extends Component {
 
   render() {
     const {setTrack, props} = this
-    const {playlist} = props
+    const {playlist, player} = props
+    const currentTrack = player.track
 
     return (
       <div>
         <div>
           <h1>{playlist.name}</h1>
-          <TrackList playlist={playlist} onTrackSelected={setTrack}></TrackList>
+          <TrackList playlist={playlist} onTrackSelected={setTrack} currentTrack={currentTrack}></TrackList>
           <Player></Player>
         </div>
         <SoundManager></SoundManager>
@@ -45,7 +46,8 @@ class Playlist extends Component {
 
 const mapStateToProps = state => {
   return {
-    playlist: state.playlist
+    playlist: state.playlist,
+    player: state.player
   }
 }
 

@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
 import s from './player.pcss'
-import {pause, play} from '../../actions/player'
+import {pause, play, setTrack} from '../../actions/player'
+import {getNextTrack, getPreviousTrack} from '../../store/getters/playlist'
 
 class Player extends Component {
 
@@ -10,6 +11,8 @@ class Player extends Component {
 
     this.play = this.play.bind(this)
     this.pause = this.pause.bind(this)
+    this.nextTrack = this.nextTrack.bind(this)
+    this.previousTrack = this.previousTrack.bind(this)
   }
 
   play () {
@@ -23,9 +26,25 @@ class Player extends Component {
     dispatch(pause())
   }
 
+  nextTrack () {
+    const {dispatch, playlist, player} = this.props
+    const {tracks} = playlist
+    const {track} = player
+
+    dispatch(setTrack(getNextTrack(tracks, track)))
+  }
+
+  previousTrack () {
+    const {dispatch, playlist, player} = this.props
+    const {tracks} = playlist
+    const {track} = player
+
+    dispatch(setTrack(getPreviousTrack(tracks, track)))
+  }
+
 
   render () {
-    const {props, play, pause} = this
+    const {props, play, pause, nextTrack, previousTrack} = this
     const {player} = props
     const {track} = player
 
@@ -34,10 +53,16 @@ class Player extends Component {
         {track.name}
         <ul>
           <li>
+            <button type='button' onClick={previousTrack}>Previous</button>
+          </li>
+          <li>
             <button type='button' onClick={play}>Play</button>
           </li>
           <li>
             <button type='button' onClick={pause}>Pause</button>
+          </li>
+          <li>
+            <button type='button' onClick={nextTrack}>Next</button>
           </li>
         </ul>
       </div>
@@ -47,6 +72,7 @@ class Player extends Component {
 
 const mapStateToProps = state => {
   return {
+    playlist: state.playlist,
     player: state.player
   }
 }

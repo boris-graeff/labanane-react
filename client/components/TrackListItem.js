@@ -19,10 +19,10 @@ class TrackListItem extends Component {
 
   render () {
     const {props, _handleClick} = this
-    const {track, index, children} = props
+    const {track, index, children, isSelected} = props
 
     return (
-      <ListItem className={classnames(s.trackListItem, s[track.provider])} handleClick={_handleClick}>
+      <ListItem className={classnames(s.trackListItem, s[track.provider], isSelected ? s.selected : '')} handleClick={_handleClick}>
         <span className={s.index}>{index}</span>
         <div>
           {children}
@@ -34,7 +34,8 @@ class TrackListItem extends Component {
 
 TrackListItem.propTypes = {
   track: PropTypes.object.isRequired,
-  index: PropTypes.number
+  index: PropTypes.number,
+  isSelected: PropTypes.bool
 }
 
 export default TrackListItem
